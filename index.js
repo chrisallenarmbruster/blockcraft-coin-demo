@@ -14,7 +14,7 @@
  * number of entries have been added. The process is kept running indefinitely with a second
  * interval.
  *
- * To run this script, use the command `node demo.js <config-file>`, where `<config-file>`
+ * To run this script, use the command `node index.js <config-file>`, where `<config-file>`
  * is the path to a JSON configuration file. To run multiple "connected" nodes, run the
  * command in separate terminals with different configuration files.
  */
@@ -276,13 +276,13 @@ blockchain(config);
 
 /* From within this directory run this file with the following command:
   
-node demo.js demoConfig1.json
+node index.js demoConfig1.json
 
 To run multiple "connected" nodes do the following in separate terminals:
 
-node demo.js demoConfig1.json
-node demo.js demoConfig2.json
-node demo.js demoConfig3.json
-node demo.js demoConfig4.json
+node index.js  demoConfig1.json
+node index.js  demoConfig2.json
+node index.js  demoConfig3.json
+node index.js  demoConfig4.json
 
 */
