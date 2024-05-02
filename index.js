@@ -22,8 +22,12 @@
 import fs from "fs";
 import crypto from "crypto";
 import elliptic from "elliptic";
+import path from "path";
+import { fileURLToPath } from "url";
 const EC = elliptic.ec;
 const ec = new EC("secp256k1");
+import dotenv from "dotenv";
+// dotenv.config();
 
 import {
   NetworkNode,
@@ -36,8 +40,38 @@ import {
   WebService,
 } from "blockcraft";
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const configFilePath = process.argv[2];
-let config = JSON.parse(fs.readFileSync(configFilePath, "utf8"));
+let config;
+
+if (configFilePath && fs.existsSync(configFilePath)) {
+  config = JSON.parse(fs.readFileSync(configFilePath, "utf8"));
+} else {
+  const defaultConfigPath = path.join(__dirname, "commonConfig.json");
+  config = JSON.parse(fs.readFileSync(defaultConfigPath, "utf8"));
+}
+
+if (process.env.NETWORK_NODE_ID) {
+  config.networkNode.id = process.env.NETWORK_NODE_ID;
+}
+
+if (process.env.NETWORK_NODE_LABEL) {
+  config.networkNode.label = process.env.NETWORK_NODE_LABEL;
+}
+
+if (process.env.NETWORK_NODE_URL) {
+  config.networkNode.url = process.env.NETWORK_NODE_URL;
+}
+
+if (process.env.NETWORK_NODE_OWNER_ADDRESS) {
+  config.networkNode.ownerAddress = process.env.NETWORK_NODE_OWNER_ADDRESS;
+}
+
+if (process.env.P2P_SERVICE_SEED_PEERS) {
+  config.p2pService.seedPeers = JSON.parse(process.env.P2P_SERVICE_SEED_PEERS);
+}
 
 const accounts = [
   {

@@ -30,6 +30,7 @@
     "nodemon": "^3.1.0"
   },
   "dependencies": {
-    "blockcraft": "github:chrisallenarmbruster/blockcraft"
+    "blockcraft": "github:chrisallenarmbruster/blockcraft",
+    "dotenv": "^16.4.5"
   }
 }
