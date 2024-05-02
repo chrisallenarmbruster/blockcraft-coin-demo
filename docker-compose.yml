@@ -1,0 +1,60 @@
+version: "3"
+services:
+  node1:
+    build: .
+    ports:
+      - "8100:3000"
+      - "8101:6001"
+    environment:
+      - NETWORK_NODE_ID=node1
+      - NETWORK_NODE_LABEL="NODE 1"
+      - NETWORK_NODE_URL=192.168.1.195
+      - NETWORK_NODE_OWNER_ADDRESS=03b629b92d58fd5abe58e2322a681e8c76e363a5691f27845ca6b9d5e7dee696cc
+      - P2P_SERVICE_SEED_PEERS=["ws://192.168.1.195:8201","ws://192.168.1.195:8301","ws://192.168.1.195:8401"]
+      - STORAGE_HANDLER_STORAGE_PATH=blockchain1.txt
+    volumes:
+      - blockcraft-data:/app
+  node2:
+    build: .
+    ports:
+      - "8200:3000"
+      - "8201:6001"
+    environment:
+      - NETWORK_NODE_ID=node2
+      - NETWORK_NODE_LABEL="NODE 2"
+      - NETWORK_NODE_URL=192.168.1.195
+      - NETWORK_NODE_OWNER_ADDRESS=024821805babaf7ccd225fc7e4854be0bfa1efc923bd9dfa974f8ab3047dc5f89a
+      - P2P_SERVICE_SEED_PEERS=["ws://192.168.1.195:8101","ws://192.168.1.195:8301","ws://192.168.1.195:8401"]
+      - STORAGE_HANDLER_STORAGE_PATH=blockchain2.txt
+    volumes:
+      - blockcraft-data:/app
+  node3:
+    build: .
+    ports:
+      - "8300:3000"
+      - "8301:6001"
+    environment:
+      - NETWORK_NODE_ID=node3
+      - NETWORK_NODE_LABEL="NODE 3"
+      - NETWORK_NODE_URL=192.168.1.195
+      - NETWORK_NODE_OWNER_ADDRESS=02d903494ac25f4d84f912274d1b39c1c9c4d20a85c3c0aeab53ad7a8c4cd3ebdb
+      - P2P_SERVICE_SEED_PEERS=["ws://192.168.1.195:8101","ws://192.168.1.195:8201","ws://192.168.1.195:8401"]
+      - STORAGE_HANDLER_STORAGE_PATH=blockchain3.txt
+    volumes:
+      - blockcraft-data:/app
+  node4:
+    build: .
+    ports:
+      - "8400:3000"
+      - "8401:6001"
+    environment:
+      - NETWORK_NODE_ID=node4
+      - NETWORK_NODE_LABEL="NODE 4"
+      - NETWORK_NODE_URL=192.168.1.195
+      - NETWORK_NODE_OWNER_ADDRESS=02d445a9280410ccfc5c5479323b09d74603cda341f51f5542368ac89b17fc446a
+      - P2P_SERVICE_SEED_PEERS=["ws://192.168.1.195:8101","ws://192.168.1.195:8201","ws://192.168.1.195:8301"]
+      - STORAGE_HANDLER_STORAGE_PATH=blockchain4.txt
+    volumes:
+      - blockcraft-data:/app
+volumes:
+  blockcraft-data:

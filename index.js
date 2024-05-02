@@ -73,6 +73,10 @@ if (process.env.P2P_SERVICE_SEED_PEERS) {
   config.p2pService.seedPeers = JSON.parse(process.env.P2P_SERVICE_SEED_PEERS);
 }
 
+if (process.env.STORAGE_HANDLER_STORAGE_PATH) {
+  config.storageHandler.storagePath = process.env.STORAGE_HANDLER_STORAGE_PATH;
+}
+
 const accounts = [
   {
     privateKey:
@@ -187,6 +191,8 @@ async function blockchain(config) {
     config.networkNode
   );
 
+  console.log("Configuration: ", config);
+
   node.blockchain.on("blockchainLoaded", (chain) => {
     console.log(
       `\nBlockchain with ${chain.length} block(s) found in storage and loaded.\n`
@@ -254,57 +260,59 @@ async function blockchain(config) {
     return balance;
   }
 
-  const intervalId = setInterval(() => {
-    if (entryCount >= numberEntriesToAdd) {
-      clearInterval(intervalId);
-    } else {
-      console.log(
-        `\nAdding \"${config.networkNode.id.toUpperCase()}-Entry ${entryCount}\" to queue.`
-      );
+  // const intervalId = setInterval(() => {
+  //   if (entryCount >= numberEntriesToAdd) {
+  //     clearInterval(intervalId);
+  //   } else {
+  //     console.log(
+  //       `\nAdding "${config.networkNode.id.toUpperCase()}-Entry ${entryCount}" to queue!`
+  //     );
 
-      const senderKeyPair = accounts.random();
-      const accountBalance = computeAccountBalance(
-        senderKeyPair.publicKeyCompressed
-      );
+  //     const senderKeyPair = accounts.random();
+  //     const accountBalance = computeAccountBalance(
+  //       senderKeyPair.publicKeyCompressed
+  //     );
 
-      if (accountBalance > 0) {
-        let amount = Math.floor(Math.random() * accountBalance);
-        amount = amount === 0 ? accountBalance : amount;
-        const unsignedEntry = {
-          from: senderKeyPair.publicKeyCompressed,
-          to: accounts.random().publicKeyCompressed,
-          amount: amount,
-          type: "crypto",
-          initiationTimestamp: Date.now(),
-          data: `${config.networkNode.id.toUpperCase()}-Entry ${entryCount}`,
-        };
+  //     if (accountBalance > 0) {
+  //       let amount = Math.floor(Math.random() * accountBalance);
+  //       amount = amount === 0 ? accountBalance : amount;
+  //       const unsignedEntry = {
+  //         from: senderKeyPair.publicKeyCompressed,
+  //         to: accounts.random().publicKeyCompressed,
+  //         amount: amount,
+  //         type: "crypto",
+  //         initiationTimestamp: Date.now(),
+  //         data: `${config.networkNode.id.toUpperCase()}-Entry ${entryCount}`,
+  //       };
 
-        const entryHash = hashEntry(unsignedEntry);
+  //       const entryHash = hashEntry(unsignedEntry);
 
-        const entryToSign = {
-          ...unsignedEntry,
-          hash: entryHash,
-        };
+  //       const entryToSign = {
+  //         ...unsignedEntry,
+  //         hash: entryHash,
+  //       };
 
-        const signature = signEntry(entryToSign, senderKeyPair.privateKey);
+  //       const signature = signEntry(entryToSign, senderKeyPair.privateKey);
 
-        const signedEntry = {
-          ...unsignedEntry,
-          hash: entryHash,
-          signature: signature,
-        };
+  //       const signedEntry = {
+  //         ...unsignedEntry,
+  //         hash: entryHash,
+  //         signature: signature,
+  //       };
 
-        node.blockchain.addEntry(signedEntry);
+  //       node.blockchain.addEntry(signedEntry);
 
-        entryCount++;
-      }
-    }
-  }, millisecondsBetweenEntries);
+  //       entryCount++;
+  //     }
+  //   }
+  // }, millisecondsBetweenEntries);
 
   setInterval(() => {}, 3600000); // Keep the process running
 }
 
 console.clear();
+console.log("Starting Blockchain...");
+console.log("Configuration: ", config);
 
 blockchain(config);
 
