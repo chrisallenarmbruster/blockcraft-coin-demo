@@ -3,8 +3,7 @@ import elliptic from "elliptic";
 const EC = elliptic.ec;
 const ec = new EC("secp256k1");
 import axios from "axios";
-// import dotenv from "dotenv";
-// dotenv.config();
+import { faker } from "@faker-js/faker";
 
 const accounts = [
   {
@@ -110,8 +109,8 @@ Array.prototype.random = function () {
 
 async function simulateTransactions() {
   let entryCount = 0;
-  const numberEntriesToAdd = 1000;
-  const millisecondsBetweenEntries = 5000;
+  const numberEntriesToAdd = 10000;
+  const millisecondsBetweenEntries = 4567;
 
   function signEntry(entry, privateKeyHex) {
     const sign = crypto.createSign("SHA256");
@@ -168,7 +167,16 @@ async function simulateTransactions() {
           amount: amount,
           type: "crypto",
           initiationTimestamp: Date.now(),
-          data: `API Entry ${entryCount} @ ${node.label}`,
+          data: `${node.label} @ ${new Date()
+            .toLocaleString("en-US", {
+              month: "2-digit",
+              day: "2-digit",
+              hour: "2-digit",
+              minute: "2-digit",
+              second: "2-digit",
+              hour12: false,
+            })
+            .replace(", ", "-")} - ${faker.finance.bic()}`,
         };
 
         const entryHash = hashEntry(unsignedEntry);
@@ -185,6 +193,8 @@ async function simulateTransactions() {
           hash: entryHash,
           signature: signature,
         };
+
+        console.log(`Adding entry: ${unsignedEntry.data}`);
 
         await addEntry(signedEntry, node.url);
 
