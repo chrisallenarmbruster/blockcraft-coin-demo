@@ -56,5 +56,16 @@ services:
       - STORAGE_HANDLER_STORAGE_PATH=blockchain4.txt
     volumes:
       - blockcraft-data:/app
+  simulator:
+    build:
+      context: .
+      dockerfile: Dockerfile.simulator
+    environment:
+      - TZ=America/Chicago
+    depends_on:
+      - node1
+      - node2
+      - node3
+      - node4
 volumes:
   blockcraft-data:

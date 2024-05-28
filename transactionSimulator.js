@@ -74,7 +74,7 @@ const networkNodeAccounts = [
       "67a522d73b9e9a0bf50d356ab68f0b79a095e283371aaf9dbca7159a54af69b0",
     publicKeyCompressed:
       "03b629b92d58fd5abe58e2322a681e8c76e363a5691f27845ca6b9d5e7dee696cc",
-    url: "http://localhost:8100",
+    url: "http://node1:3000",
     label: "Node 1",
   },
   {
@@ -82,7 +82,7 @@ const networkNodeAccounts = [
       "74529a9708b281c8451e885cc5dfee01f8af6e09a2ab15a63b48bc566cd21779",
     publicKeyCompressed:
       "024821805babaf7ccd225fc7e4854be0bfa1efc923bd9dfa974f8ab3047dc5f89a",
-    url: "http://localhost:8200",
+    url: "http://node2:3000",
     label: "Node 2",
   },
   {
@@ -90,7 +90,7 @@ const networkNodeAccounts = [
       "aa8f4402585881e319c649dc716b6b6459d695074de749aa6a5fd7b103f99e40",
     publicKeyCompressed:
       "02d903494ac25f4d84f912274d1b39c1c9c4d20a85c3c0aeab53ad7a8c4cd3ebdb",
-    url: "http://localhost:8300",
+    url: "http://node3:3000",
     label: "Node 3",
   },
   {
@@ -98,7 +98,7 @@ const networkNodeAccounts = [
       "25794138f901158a61f630b08e81fd1e5aa4d338534d2e538c7bfcb4c161838d",
     publicKeyCompressed:
       "02d445a9280410ccfc5c5479323b09d74603cda341f51f5542368ac89b17fc446a",
-    url: "http://localhost:8400",
+    url: "http://node4:3000",
     label: "Node 4",
   },
 ];
@@ -209,4 +209,4 @@ async function simulateTransactions() {
 console.clear();
 console.log("Starting Simulator...");
 
-simulateTransactions();
+setTimeout(simulateTransactions, 10000);
