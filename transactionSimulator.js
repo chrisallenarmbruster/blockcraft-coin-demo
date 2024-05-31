@@ -24,36 +24,42 @@ const accounts = [
       "eb25c7091e6d1085596924e0c45dca79492c754ced32fe156ef3cf8241ab36fc",
     publicKeyCompressed:
       "03b5f4f8ea6eb0d146a3e9a2a0dd89c0124acd5a980a230d097bf6794a85d0d879",
+    label: "DemoPersonal",
   },
   {
     privateKey:
       "ef4f978f9dfe98b3da6c195f10ef08a40d230f4278cb5d7eff0a68154c049213",
     publicKeyCompressed:
       "03a010ab53e15ec2f56c1f83dcb7fddbc80334fb5aeda42346580208be6be0c8d6",
+    label: "DemoWork",
   },
   {
     privateKey:
       "bf57ea21283cf44ed224c0e737356ed39b49312089348d6bc8cd4eaee717de4f",
     publicKeyCompressed:
       "0305fbfef5295b9e13a6a1c6208b93bbedbc9d259e8b5e5956b64acf21ab5600c4",
+    label: "Max",
   },
   {
     privateKey:
       "eee366f4e97ec8d5cad68948ab3b668924c92b4193c53439c206a542bc2f1f73",
     publicKeyCompressed:
       "02572dff346ccd699e043839e98fe4414512080ec6821afd9ceb4edf47c7953ed7",
+    label: "Isabelle",
   },
   {
     privateKey:
       "b960bd23fc35aedc01f4a4211549c82cb507d3630e40cd363a91d5bdeef0cd16",
     publicKeyCompressed:
       "021829f5f2d714bcec448f8019ffd43e267088ba42408483d7d2d1257f8d5a639b",
+    label: "Melinda",
   },
   {
     privateKey:
       "30c34382d8fca736bf3459a21a3f1e2e2e01813a6d1934b1e398eba56a17a3d4",
     publicKeyCompressed:
       "027097754984f873f435d6acc434affd0e36c3530d685be10d3b9d068be0666866",
+    label: "Chris",
   },
   {
     privateKey:
