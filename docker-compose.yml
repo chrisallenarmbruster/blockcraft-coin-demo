@@ -1,10 +1,14 @@
 version: "3"
 services:
   node1:
-    image: registry.rev4labs.com/blockcraft-coin-demo-service:0.1.1
+    build:
+      context: .
+      dockerfile: Dockerfile.p2pNode
+      # You can build and push an image to a registry, then use the 'image' property instead of 'build'
+      # image: your-registry-url/blockcraft-coin-demo-service:1.0.0
     ports:
-      - "51200:443"
-      - "51201:6001"
+      - "50000:3000"
+      - "51000:6001"
     environment:
       - NETWORK_NODE_ID=node1
       - NETWORK_NODE_LABEL="NODE 1"
@@ -12,13 +16,19 @@ services:
       - NETWORK_NODE_OWNER_ADDRESS=03b629b92d58fd5abe58e2322a681e8c76e363a5691f27845ca6b9d5e7dee696cc
       - P2P_SERVICE_SEED_PEERS=["ws://node2:6001","ws://node3:6001","ws://node4:6001"]
       - STORAGE_HANDLER_STORAGE_PATH=node1.txt
+      - WEB_SERVICE_PORT=3000
+      - P2P_SERVICE_PORT=6001
     volumes:
       - blockcraft-data:/app/node1
   node2:
-    image: registry.rev4labs.com/blockcraft-coin-demo-service:0.1.1
+    build:
+      context: .
+      dockerfile: Dockerfile.p2pNode
+      # You can build and push an image to a registry, then use the 'image' property instead of 'build'
+      # image: your-registry-url/blockcraft-coin-demo-service:1.0.0
     ports:
-      - "51202:443"
-      - "51203:6001"
+      - "50001:3000"
+      - "51001:6001"
     environment:
       - NETWORK_NODE_ID=node2
       - NETWORK_NODE_LABEL="NODE 2"
@@ -26,13 +36,19 @@ services:
       - NETWORK_NODE_OWNER_ADDRESS=024821805babaf7ccd225fc7e4854be0bfa1efc923bd9dfa974f8ab3047dc5f89a
       - P2P_SERVICE_SEED_PEERS=["ws://node1:6001","ws://node3:6001","ws://node4:6001"]
       - STORAGE_HANDLER_STORAGE_PATH=node2.txt
+      - WEB_SERVICE_PORT=3000
+      - P2P_SERVICE_PORT=6001
     volumes:
       - blockcraft-data:/app/node2
   node3:
-    image: registry.rev4labs.com/blockcraft-coin-demo-service:0.1.1
+    build:
+      context: .
+      dockerfile: Dockerfile.p2pNode
+      # You can build and push an image to a registry, then use the 'image' property instead of 'build'
+      # image: your-registry-url/blockcraft-coin-demo-service:1.0.0
     ports:
-      - "51204:443"
-      - "51205:6001"
+      - "50002:3000"
+      - "51002:6001"
     environment:
       - NETWORK_NODE_ID=node3
       - NETWORK_NODE_LABEL="NODE 3"
@@ -40,13 +56,19 @@ services:
       - NETWORK_NODE_OWNER_ADDRESS=02d903494ac25f4d84f912274d1b39c1c9c4d20a85c3c0aeab53ad7a8c4cd3ebdb
       - P2P_SERVICE_SEED_PEERS=["ws://node1:6001","ws://node2:6001","ws://node4:6001"]
       - STORAGE_HANDLER_STORAGE_PATH=node3.txt
+      - WEB_SERVICE_PORT=3000
+      - P2P_SERVICE_PORT=6001
     volumes:
       - blockcraft-data:/app/node3
   node4:
-    image: registry.rev4labs.com/blockcraft-coin-demo-service:0.1.1
+    build:
+      context: .
+      dockerfile: Dockerfile.p2pNode
+      # You can build and push an image to a registry, then use the 'image' property instead of 'build'
+      # image: your-registry-url/blockcraft-coin-demo-service:1.0.0
     ports:
-      - "51206:443"
-      - "51207:6001"
+      - "50003:3000"
+      - "51003:6001"
     environment:
       - NETWORK_NODE_ID=node4
       - NETWORK_NODE_LABEL="NODE 4"
@@ -54,12 +76,19 @@ services:
       - NETWORK_NODE_OWNER_ADDRESS=02d445a9280410ccfc5c5479323b09d74603cda341f51f5542368ac89b17fc446a
       - P2P_SERVICE_SEED_PEERS=["ws://node1:6001","ws://node2:6001","ws://node3:6001"]
       - STORAGE_HANDLER_STORAGE_PATH=node4.txt
+      - WEB_SERVICE_PORT=3000
+      - P2P_SERVICE_PORT=6001
     volumes:
       - blockcraft-data:/app/node4
   simulator:
-    image: registry.rev4labs.com/blockcraft-coin-demo-simulator:0.1.1
+    build:
+      context: .
+      dockerfile: Dockerfile.simulator
+      # You can build and push an image to a registry, then use the 'image' property instead of 'build'
+      # image: your-registry-url/blockcraft-coin-demo-simulator:1.0.0
     environment:
       - TZ=America/Chicago
+      - WEB_SERVICE_PORT=3000
     depends_on:
       - node1
       - node2

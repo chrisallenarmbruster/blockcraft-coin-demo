@@ -8,7 +8,7 @@
  *
  * This script is run as part of a Docker Compose stack included in the project.
  *
- * @file transactionSimulator.js
+ *
  */
 
 import crypto from "crypto";
@@ -17,6 +17,12 @@ const EC = elliptic.ec;
 const ec = new EC("secp256k1");
 import axios from "axios";
 import { faker } from "@faker-js/faker";
+
+let docker = true;
+
+if (process.argv.includes("no-docker")) {
+  docker = false;
+}
 
 const accounts = [
   {
@@ -333,8 +339,8 @@ const networkNodeAccounts = [
       "67a522d73b9e9a0bf50d356ab68f0b79a095e283371aaf9dbca7159a54af69b0",
     publicKeyCompressed:
       "03b629b92d58fd5abe58e2322a681e8c76e363a5691f27845ca6b9d5e7dee696cc",
-    url: "node1",
-    webServicePort: 443,
+    url: docker ? "node1" : "localhost",
+    webServicePort: docker ? process.env.WEB_SERVICE_PORT || 443 : 3000,
     label: "Node 1",
   },
   {
@@ -342,8 +348,8 @@ const networkNodeAccounts = [
       "74529a9708b281c8451e885cc5dfee01f8af6e09a2ab15a63b48bc566cd21779",
     publicKeyCompressed:
       "024821805babaf7ccd225fc7e4854be0bfa1efc923bd9dfa974f8ab3047dc5f89a",
-    url: "node2",
-    webServicePort: 443,
+    url: docker ? "node2" : "localhost",
+    webServicePort: docker ? process.env.WEB_SERVICE_PORT || 443 : 3001,
     label: "Node 2",
   },
   {
@@ -351,8 +357,8 @@ const networkNodeAccounts = [
       "aa8f4402585881e319c649dc716b6b6459d695074de749aa6a5fd7b103f99e40",
     publicKeyCompressed:
       "02d903494ac25f4d84f912274d1b39c1c9c4d20a85c3c0aeab53ad7a8c4cd3ebdb",
-    url: "node3",
-    webServicePort: 443,
+    url: docker ? "node3" : "localhost",
+    webServicePort: docker ? process.env.WEB_SERVICE_PORT || 443 : 3002,
     label: "Node 3",
   },
   {
@@ -360,8 +366,8 @@ const networkNodeAccounts = [
       "25794138f901158a61f630b08e81fd1e5aa4d338534d2e538c7bfcb4c161838d",
     publicKeyCompressed:
       "02d445a9280410ccfc5c5479323b09d74603cda341f51f5542368ac89b17fc446a",
-    url: "node4",
-    webServicePort: 443,
+    url: docker ? "node4" : "localhost",
+    webServicePort: docker ? process.env.WEB_SERVICE_PORT || 443 : 3003,
     label: "Node 4",
   },
 ];

@@ -10,13 +10,27 @@
  * several event listeners to log the progress of the blockchain. It also defines several
  * helper functions for signing and hashing entries, and computing account balances.
  *
- * The function then starts an interval that adds entries to the blockchain until a certain
- * number of entries have been added. The process is kept running indefinitely with a second
- * interval.
- *
  * To run this script, use the command `node index.js <config-file>`, where `<config-file>`
  * is the path to a JSON configuration file. To run multiple "connected" nodes, run the
  * command in separate terminals with different configuration files.
+ * From within this directory run this file with the following command:
+ *
+ *   node index.js demoConfig1.json
+ *
+ * To run multiple "connected" nodes, do the following in separate terminals:
+ *
+ *   node index.js  demoConfig1.json
+ *   node index.js  demoConfig2.json
+ *   node index.js  demoConfig3.json
+ *   node index.js  demoConfig4.json
+ *
+ *   This will spin up a blockchain and create a genesis block that is seeded with values from the config file.
+ *
+ *   You can explore it at http://localhost:3000
+ *
+ * Alternatively you can run the docker compose file to spin up a network of nodes and a transaction simulator
+ * with the following command:  docker compose up
+ *
  */
 
 import fs from "fs";
@@ -79,10 +93,6 @@ if (process.env.STORAGE_HANDLER_STORAGE_PATH) {
   config.storageHandler.storagePath = process.env.STORAGE_HANDLER_STORAGE_PATH;
 }
 
-Array.prototype.random = function () {
-  return this[Math.floor(Math.random() * this.length)];
-};
-
 async function blockchain(config) {
   let entryCount = 0;
   const numberEntriesToAdd = 1000;
@@ -142,7 +152,7 @@ async function blockchain(config) {
     );
   });
 
-  setInterval(() => {}, 3600000); // Keep the process running
+  setInterval(() => {}, 3600000);
 }
 
 console.clear();
@@ -150,16 +160,3 @@ console.log("Starting Blockchain...");
 console.log("Configuration: ", config);
 
 blockchain(config);
-
-/* From within this directory run this file with the following command:
-  
-node index.js demoConfig1.json
-
-To run multiple "connected" nodes do the following in separate terminals:
-
-node index.js  demoConfig1.json
-node index.js  demoConfig2.json
-node index.js  demoConfig3.json
-node index.js  demoConfig4.json
-
-*/
