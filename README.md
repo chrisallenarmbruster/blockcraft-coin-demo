@@ -106,7 +106,7 @@ Here are links to related repos:
 - [Blockcraft Explorer](https://github.com/chrisallenarmbruster/blockcraft-explorer): A frontend "Explorer" that provides interaction with the blockchain, transactions and network nodes. This is included with Blockcraft and is also available as a standalone repo for custom implementations.
   <br>
 
-- [Blockcraft Vault](https://github.com/chrisallenarmbruster/blockcraft-vault): A frontend "wallet" a employing zero-knowledge encryption scheme that provides a user interface for managing keypairs, sending transactions, and viewing transaction history.
+- [Blockcraft Vault](https://github.com/chrisallenarmbruster/blockcraft-vault): A frontend "wallet" employing a zero-knowledge encryption scheme that provides a user interface for managing keypairs, sending transactions, and viewing transaction history.
 
 ## Engineers
 
