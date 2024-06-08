@@ -1,6 +1,6 @@
 ![Blockcraft](blockcraft.png)
 
-# Blockcraft Example and Demo for Cryptocurrency Use Case 🚀
+# Blockcraft Demo for Cryptocurrency Use Case 🚀
 
 This project showcases how to create a simple cryptocurrency using [Blockcraft](https://github.com/chrisallenarmbruster/blockcraft), demonstrating the integration of the `Blockchain` and `NetworkNode` classes, along with a proof of work consensus mechanism, mining incentive, data handling, persistent storage, P2P and web service components. It demonstrates the ability to create a blockchain, mine blocks, send transactions, and spin up a single network node or multiple nodes to form a decentralized network.
 
