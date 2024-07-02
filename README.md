@@ -6,6 +6,13 @@ This project showcases how to create a simple cryptocurrency using [Blockcraft](
 
 By following this example, you can learn how to build a fully functional decentralized blockchain application using Blockcraft.
 
+<br>
+<br>
+
+![Blockcraft Demo Diagram](blockcraft-demo-diagram.png)
+<br>
+<br>
+
 ## Interact with an Already Deployed Demo
 
 There is a live deployment of this code that you can interact with. The deployment is running four instances of `src/index.js` (incl. the NetworkNode and Blockchain classes) and one instance of `src/transactionSimulator.js`, forming a decentralized network and a living blockchain.
