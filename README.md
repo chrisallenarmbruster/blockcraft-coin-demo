@@ -1,6 +1,6 @@
 ![Blockcraft](blockcraft.png)
 
-# Blockcraft Demo for Cryptocurrency Use Case 🚀
+# 🚀 Blockcraft Demo for Cryptocurrency Use Case 💰
 
 This project showcases how to create a simple cryptocurrency using [Blockcraft](https://github.com/chrisallenarmbruster/blockcraft), demonstrating the integration of the `Blockchain` and `NetworkNode` classes, along with a proof of work consensus mechanism, mining incentive, data handling, persistent storage, P2P and web service components. It demonstrates the ability to create a blockchain, mine blocks, send transactions, and spin up a single network node or multiple nodes to form a decentralized network.
 
@@ -13,13 +13,13 @@ By following this example, you can learn how to build a fully functional decentr
 <br>
 <br>
 
-## Interact with an Already Deployed Demo
+## 🖥️ Interact with an Already Deployed Demo
 
 There is a live deployment of this code that you can interact with. The deployment is running four instances of `src/index.js` (incl. the NetworkNode and Blockchain classes) and one instance of `src/transactionSimulator.js`, forming a decentralized network and a living blockchain.
 
 Access the deployment here: [Explorer Frontend](https://node1.blockcraft.rev4labs.com) and [Blockcraft Vault Wallet](https://vault.blockcraft.rev4labs.com).
 
-## Run the Demo Locally (two options)
+## 🖱️ Run the Demo Locally (two options)
 
 There are two ways to run the demo locally.
 
@@ -84,7 +84,7 @@ Access the explorer frontend using a web browser on any of the nodes:
 To stop the demo, press `Ctrl+C` in each terminal where you ran `node src/index.js` or `node src/transactionSimulator.js`.
 Blockcraft
 
-## Using this Example as a Learning Resource
+## 📚 Using this Example as a Learning Resource
 
 This project is designed to be a learning resource for those interested in exploring blockchain technology with Blockcraft. It is a simple implementation of a blockchain and network node, and is not intended for production use. It is a starting point for developers who want to learn how to build a blockchain application from scratch. Here is some information about the project structure and how to navigate the code:
 
@@ -100,7 +100,7 @@ This project is designed to be a learning resource for those interested in explo
 
 - **docker related files:** There are a handful of files in the root directory that are used by Docker to build and deploy images and run the containers as a stack. These are not used when running the demo natively with Node.js and are not necessary to understand the core concepts of Blockcraft.
 
-## Other Resources
+## 🛠️ Other Resources
 
 Here are links to related repos:
 
